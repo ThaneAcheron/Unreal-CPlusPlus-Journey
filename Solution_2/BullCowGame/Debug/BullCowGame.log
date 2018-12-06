@@ -1,3 +1,0 @@
-﻿  Main.cpp
-c:\users\thaneacheron\source\repos\solution_2\bullcowgame\main.cpp(17): warning C4326: return type of 'main' should be 'int' instead of 'void'
-  BullCowGame.vcxproj -> C:\Users\ThaneAcheron\source\repos\Solution_2\Debug\BullCowGame.exe
