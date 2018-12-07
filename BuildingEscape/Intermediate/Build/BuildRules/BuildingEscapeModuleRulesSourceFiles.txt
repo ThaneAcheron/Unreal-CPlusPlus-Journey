@@ -1,0 +1,3 @@
+H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Source\BuildingEscape\BuildingEscape.Build.cs
+H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Source\BuildingEscape.Target.cs
+H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Source\BuildingEscapeEditor.Target.cs
