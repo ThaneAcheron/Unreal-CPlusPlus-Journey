@@ -19,12 +19,14 @@ void FBUllCowGame::Reset()
 
 	const FString HIDDEN_WORD = "antman";
 	MyHiddenWord = HIDDEN_WORD;
+	bMyGameIsWon = false;
 	return;
 }
 
 bool FBUllCowGame::IsGameWon() const
 {
-	return false;
+
+	return bMyGameIsWon;
 }
 
 int32 FBUllCowGame::GetHiddenWordLength() const
@@ -82,5 +84,12 @@ FBullCowCount FBUllCowGame::SumbitGuess(FString guess)
 		}
 	}
 
+	if (bullCowCount.Bulls == HiddenWordLength)
+	{
+		bMyGameIsWon = true
+	}
+	else {
+		bMyGameIsWon = false;
+	}
 	return bullCowCount;
 }

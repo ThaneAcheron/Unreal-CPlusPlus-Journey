@@ -42,11 +42,11 @@ void PlayGame() {
 	// TODO add a game summary
 	string guess = "";
 
-	for (int32 i = 1; i <= maxtries; i++)
+	while (!BCGAME.IsGameWon() && BCGAME.GetCurrentTry <= maxtries)
 	{
 		guess = GetValidGuess(); //TODO get valid guess
 
-			//submit valid guess to the game
+		//submit valid guess to the game
 		FBullCowCount BullCowCount = BCGAME.SumbitGuess(guess);
 		std::cout << "Bulls - " << BullCowCount.Bulls;
 		std::cout << "  Cows - " << BullCowCount.Cows;
@@ -60,11 +60,11 @@ void PlayGame() {
 string GetValidGuess() {
 
 	EWordStaus status = EWordStaus::Invalid;
+	string guess = "";
 
 	do
 	{
 		cout << "Your Try: " << BCGAME.GetCurrentTry() << " Enter your Guess:";
-		string guess = "";
 		getline(cin, guess);
 	    status = BCGAME.CheckGuessValidity(guess);
 
@@ -80,11 +80,11 @@ string GetValidGuess() {
 			cout << "Please enter all lowercase letters";
 			break;
 		default:
-			return guess;
+			break;
 		}
 	} while (status != EWordStaus::Ok);
 
-	
+	return guess;
 }
 
 void PrintIntro() {

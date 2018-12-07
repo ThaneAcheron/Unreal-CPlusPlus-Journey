@@ -42,5 +42,6 @@ private:
  //Construct Inilitialisation
 	int MyCurrentTry;
 	int MyMaxTries;
+	bool bMyGameIsWon;
 	FString MyHiddenWord;
 };
