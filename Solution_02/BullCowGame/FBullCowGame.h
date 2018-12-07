@@ -41,7 +41,9 @@ public:
 private:
  //Construct Inilitialisation
 	int MyCurrentTry;
-	int MyMaxTries;
 	bool bMyGameIsWon;
 	FString MyHiddenWord;
+
+	bool IsIsogram(FString) const;
+	bool IsLowerCase(FString) const;
 };

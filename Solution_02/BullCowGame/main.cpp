@@ -6,6 +6,8 @@ Thia is the console executable that makes use of the bullcow class, this acts as
 #include <iostream>
 #include <string>
 #include "FBullCowGame.h"
+#include <map>
+#define TMap std::map 
 
 using FText = std::string;
 using int32 = int;
@@ -19,6 +21,7 @@ string GetValidGuess();
 void PlayGame();
 bool AskToPlayAgain();
 FText CheckGuessValidity(FText);
+void PrintGameSummary();
 
 FBUllCowGame BCGAME;
 
@@ -42,7 +45,7 @@ void PlayGame() {
 	// TODO add a game summary
 	string guess = "";
 
-	while (!BCGAME.IsGameWon() && BCGAME.GetCurrentTry <= maxtries)
+	while (!BCGAME.IsGameWon() && BCGAME.GetCurrentTry() <= maxtries)
 	{
 		guess = GetValidGuess(); //TODO get valid guess
 
@@ -54,8 +57,21 @@ void PlayGame() {
 
 		cout << "\n" << guess << "\n";
 	}
+
+	//Summarise game 
+    PrintGameSummary();
+	return;
 }
 
+void PrintGameSummary() {
+
+	if (BCGAME.IsGameWon()) {
+		cout << "WELL DONE! YOU WIN!\n";
+	}
+	else {
+		cout << "You Loose!\n";
+	}
+}
 
 string GetValidGuess() {
 
@@ -71,13 +87,13 @@ string GetValidGuess() {
 		switch (status)
 		{
 		case EWordStaus::Wrong_Length:
-			cout << "Please enter a " << BCGAME.GetHiddenWordLength() << " letter word. \n";
+			cout << "Please enter a " << BCGAME.GetHiddenWordLength() << " letter word. \n"; 
 			break;
 		case EWordStaus::Not_Isogram:
-			cout << "Please enter a word without repeating letters";
+			cout << "Please enter a word without repeating letters \n"; 
 			break;
 		case EWordStaus::Not_Lowercase:
-			cout << "Please enter all lowercase letters";
+			cout << "Please enter all lowercase letters \n"; //TODO Write Function not lowercase
 			break;
 		default:
 			break;
