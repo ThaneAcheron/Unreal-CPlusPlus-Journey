@@ -4,9 +4,9 @@
   Using Visual Studio 2017 14.16.27023 toolchain (C:\Program Files (x86)\Microsoft Visual Studio\2017\Professional\VC\Tools\MSVC\14.16.27023) and Windows 10.0.17763.0 SDK (C:\Program Files (x86)\Windows Kits\10).
   Building 3 actions with 6 processes...
     [1/3] PositionReporter.cpp
-    [2/3] UE4Editor-BuildingEscape-8949.lib
-       Creating library H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Intermediate\Build\Win64\UE4Editor\Development\BuildingEscape\UE4Editor-BuildingEscape-8949.lib and object H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Intermediate\Build\Win64\UE4Editor\Development\BuildingEscape\UE4Editor-BuildingEscape-8949.exp
-    [3/3] UE4Editor-BuildingEscape-8949.dll
-       Creating library H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Intermediate\Build\Win64\UE4Editor\Development\BuildingEscape\UE4Editor-BuildingEscape-8949.suppressed.lib and object H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Intermediate\Build\Win64\UE4Editor\Development\BuildingEscape\UE4Editor-BuildingEscape-8949.suppressed.exp
+    [2/3] UE4Editor-BuildingEscape-513.lib
+       Creating library H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Intermediate\Build\Win64\UE4Editor\Development\BuildingEscape\UE4Editor-BuildingEscape-513.lib and object H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Intermediate\Build\Win64\UE4Editor\Development\BuildingEscape\UE4Editor-BuildingEscape-513.exp
+    [3/3] UE4Editor-BuildingEscape-513.dll
+       Creating library H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Intermediate\Build\Win64\UE4Editor\Development\BuildingEscape\UE4Editor-BuildingEscape-513.suppressed.lib and object H:\Git\Unreal-CPlusPlus-Journey\BuildingEscape\Intermediate\Build\Win64\UE4Editor\Development\BuildingEscape\UE4Editor-BuildingEscape-513.suppressed.exp
   Deploying BuildingEscapeEditor Win64 Development...
-  Total build time: 6,18 seconds (Parallel executor: 3,08 seconds)
+  Total build time: 23,42 seconds (Parallel executor: 20,27 seconds)
