@@ -1,7 +1,12 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "OpenDoor.h"
+#include "Engine/World.h"
+#include "GameFramework/PlayerController.h"
 #include "GameFramework/Actor.h"
+#include "time.h"
+
+
 
 // Sets default values for this component's properties
 UOpenDoor::UOpenDoor()
@@ -20,12 +25,24 @@ void UOpenDoor::BeginPlay()
 	Super::BeginPlay();
 
 	// ...
-	AActor * Object = this->GetOwner();
+	ActorThatOpens = GetWorld()->GetFirstPlayerController()->GetPawn();
+	Object = this->GetOwner();
 
-	FRotator NewRotation = FRotator(0.0f, -60.0f, 0.0f);
+	CloseDoor();
+}
 
+void UOpenDoor::CloseDoor()
+{
+	FRotator NewRotation = FRotator(0.0f, 0.0f, 0.0f);
 	Object->SetActorRotation(NewRotation);
 }
+
+void UOpenDoor::OpenDoor()
+{
+	FRotator NewRotation = FRotator(0.0f, OpenAngle, 0.0f);
+	Object->SetActorRotation(NewRotation);
+}
+
 
 // Called every frame
 void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction)
@@ -33,5 +50,15 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
 	// ...
+	if (PressurePlate->IsOverlappingActor(ActorThatOpens))
+	{
+		OpenDoor();
+		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
+	}
+
+	if (GetWorld()->GetTimeSeconds() > LastDoorOpenTime + DoorCloseDelpay && !PressurePlate->IsOverlappingActor(ActorThatOpens))
+	{
+		CloseDoor();
+	}
 }
 
