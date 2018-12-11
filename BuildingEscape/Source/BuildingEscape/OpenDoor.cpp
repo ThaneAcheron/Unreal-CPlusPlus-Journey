@@ -29,6 +29,7 @@ void UOpenDoor::BeginPlay()
 	Object = this->GetOwner();
 
 	CloseDoor();
+
 }
 
 void UOpenDoor::CloseDoor()

@@ -4,6 +4,8 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
+#include "Components/InputComponent.h"
 #include "Grabber.generated.h"
 
 
@@ -26,7 +28,19 @@ public:
 
 private:
 
-	/*How far ahead*/
+	//How far ahead can the actor grab in cm?
 	float reach = 100.0f;
-		
+
+	//Actor handlers
+	UPhysicsHandleComponent* PhysicsHandle = nullptr; 
+	UInputComponent* InputComponent = nullptr;
+
+	// Ray-Cast and Grab what's in reach
+	void Grab();
+	// Release
+	void GrabRelease();
+
+	//Attach Actor Components
+	void AttachActorComponents();
+	const FHitResult GetFirstPhysicsBodyInReach();
 };
