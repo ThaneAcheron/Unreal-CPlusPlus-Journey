@@ -43,4 +43,7 @@ private:
 	//Attach Actor Components
 	void AttachActorComponents();
 	const FHitResult GetFirstPhysicsBodyInReach();
+
+	FVector GetReachLineEnd();
+	FVector GetReachLineStart();
 };

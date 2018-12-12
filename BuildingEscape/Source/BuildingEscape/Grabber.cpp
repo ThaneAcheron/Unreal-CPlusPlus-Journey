@@ -52,19 +52,12 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	//Variables to store Player View Point 
-	FVector PlayerViewPoint;
-	FRotator PlayerViewPoinRotation;
-
-	//Reference the player and store the viewport data
-	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerViewPoint, OUT PlayerViewPoinRotation);
-	FVector LineTraceEnd = PlayerViewPoint + PlayerViewPoinRotation.Vector()  * reach;
-
 	//LINE TRACE if the physcis handle is attached 
 	  //Move the object that we're holding
+	if (!PhysicsHandle) { return; }
 	if (PhysicsHandle->GrabbedComponent)
 	{
-		PhysicsHandle->SetTargetLocation(LineTraceEnd);
+		PhysicsHandle->SetTargetLocation(GetReachLineEnd());
 	}
 
 }
@@ -96,24 +89,13 @@ void UGrabber::GrabRelease() {
 //Raycast and return a hit result
 const FHitResult UGrabber::GetFirstPhysicsBodyInReach()
 {
-	//Variables to store Player View Point 
-	FVector PlayerViewPoint;
-	FRotator PlayerViewPoinRotation;
-
-	//Reference the player and store the viewport data
-	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerViewPoint, OUT PlayerViewPoinRotation);
-	FVector LineTraceEnd = PlayerViewPoint + PlayerViewPoinRotation.Vector()  * reach;
-
-	//Debug
-	//DrawDebugLine(GetWorld(), PlayerViewPoint, LineTraceEnd, FColor(255,0,0), false, 0.0f, 0, 10.f);
-
 	//LineTrace Raycast
 	FHitResult LineTraceHit;
 
 	//Raycast type declaration
 	FCollisionQueryParams TraceParam(FName(TEXT("")), false, GetOwner());
 	//SetUp Query param
-	GetWorld()->LineTraceSingleByObjectType(OUT LineTraceHit, PlayerViewPoint, LineTraceEnd, FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody), TraceParam);
+	GetWorld()->LineTraceSingleByObjectType(OUT LineTraceHit, GetReachLineEnd(), GetReachLineStart(), FCollisionObjectQueryParams(ECollisionChannel::ECC_PhysicsBody), TraceParam);
 
 	AActor *hitActor = LineTraceHit.GetActor();
 	if (hitActor)
@@ -122,4 +104,32 @@ const FHitResult UGrabber::GetFirstPhysicsBodyInReach()
 	}
 
 	return LineTraceHit;
+}
+
+FVector UGrabber::GetReachLineEnd()
+{
+	//Variables to store Player View Point 
+	FVector PlayerViewPoint;
+	FRotator PlayerViewPoinRotation;
+
+	//Reference the player and store the viewport data
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerViewPoint, OUT PlayerViewPoinRotation);
+	return PlayerViewPoint + PlayerViewPoinRotation.Vector()  * reach;	
+
+	//Debug
+  //DrawDebugLine(GetWorld(), PlayerViewPoint, LineTraceEnd, FColor(255,0,0), false, 0.0f, 0, 10.f);
+}
+
+FVector UGrabber::GetReachLineStart()
+{
+	//Variables to store Player View Point 
+	FVector PlayerViewPoint;
+	FRotator PlayerViewPoinRotation;
+
+	//Reference the player and store the viewport data
+	GetWorld()->GetFirstPlayerController()->GetPlayerViewPoint(OUT PlayerViewPoint, OUT PlayerViewPoinRotation);
+	return PlayerViewPoint;
+
+	//Debug
+   //DrawDebugLine(GetWorld(), PlayerViewPoint, LineTraceEnd, FColor(255,0,0), false, 0.0f, 0, 10.f);
 }
