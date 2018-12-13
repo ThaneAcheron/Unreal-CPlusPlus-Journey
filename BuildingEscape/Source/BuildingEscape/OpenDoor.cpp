@@ -35,14 +35,14 @@ void UOpenDoor::BeginPlay()
 
 void UOpenDoor::CloseDoor()
 {
-	FRotator NewRotation = FRotator(0.0f, 0.0f, 0.0f);
-	Object->SetActorRotation(NewRotation);
+	OnCloseRequest.Broadcast();
 }
 
 void UOpenDoor::OpenDoor()
 {
-	FRotator NewRotation = FRotator(0.0f, OpenAngle, 0.0f);
-	Object->SetActorRotation(NewRotation);
+	//FRotator NewRotation = FRotator(0.0f, OpenAngle, 0.0f);
+	OnOpenRequest.Broadcast(); //BROAD CAST AN EVENT HANDLER!
+	//Object->SetActorRotation(NewRotation);
 }
 
 
@@ -53,16 +53,19 @@ void UOpenDoor::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompon
 
 	// ...
 	if (!PressurePlate) { return; }
-	if (GetTotalMassOfActorsOnPlate() > 50.f) //TODO make into parameter
+	if (GetTotalMassOfActorsOnPlate() > TriggerMass) //TODO make into parameter
 	{
 		OpenDoor();
-		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
+//		LastDoorOpenTime = GetWorld()->GetTimeSeconds();
 	}
-
-	if (GetWorld()->GetTimeSeconds() > LastDoorOpenTime + DoorCloseDelpay && !PressurePlate->IsOverlappingActor(ActorThatOpens))
-	{
-	  CloseDoor();
+	else {
+		CloseDoor();
 	}
+	//Time Example
+//	if (GetWorld()->GetTimeSeconds() > LastDoorOpenTime + DoorCloseDelpay && !PressurePlate->IsOverlappingActor(ActorThatOpens))
+//	{
+//	  CloseDoor();
+//	} 
 }
 
 float UOpenDoor::GetTotalMassOfActorsOnPlate() {

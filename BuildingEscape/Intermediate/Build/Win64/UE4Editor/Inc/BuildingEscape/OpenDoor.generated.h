@@ -13,6 +13,13 @@ PRAGMA_DISABLE_DEPRECATION_WARNINGS
 #endif
 #define BUILDINGESCAPE_OpenDoor_generated_h
 
+#define BuildingEscape_Source_BuildingEscape_OpenDoor_h_10_DELEGATE \
+static inline void FDoorRequest_DelegateWrapper(const FMulticastScriptDelegate& DoorRequest) \
+{ \
+	DoorRequest.ProcessMulticastDelegate<UObject>(NULL); \
+}
+
+
 #define BuildingEscape_Source_BuildingEscape_OpenDoor_h_14_RPC_WRAPPERS
 #define BuildingEscape_Source_BuildingEscape_OpenDoor_h_14_RPC_WRAPPERS_NO_PURE_DECLS
 #define BuildingEscape_Source_BuildingEscape_OpenDoor_h_14_INCLASS_NO_PURE_DECLS \
@@ -58,9 +65,7 @@ DEFINE_VTABLE_PTR_HELPER_CTOR_CALLER(UOpenDoor); \
 
 
 #define BuildingEscape_Source_BuildingEscape_OpenDoor_h_14_PRIVATE_PROPERTY_OFFSET \
-	FORCEINLINE static uint32 __PPO__OpenAngle() { return STRUCT_OFFSET(UOpenDoor, OpenAngle); } \
-	FORCEINLINE static uint32 __PPO__PressurePlate() { return STRUCT_OFFSET(UOpenDoor, PressurePlate); } \
-	FORCEINLINE static uint32 __PPO__DoorCloseDelpay() { return STRUCT_OFFSET(UOpenDoor, DoorCloseDelpay); }
+	FORCEINLINE static uint32 __PPO__PressurePlate() { return STRUCT_OFFSET(UOpenDoor, PressurePlate); }
 
 
 #define BuildingEscape_Source_BuildingEscape_OpenDoor_h_11_PROLOG
