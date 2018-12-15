@@ -1,0 +1,15 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UE4Editor-BattleTank.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"H:\Git\Unreal-CPlusPlus-Journey\BattleTank\Intermediate\Build\Win64\BattleTankEditor\Development\Engine\SharedPCH.Engine.h.obj"
+"H:\Git\Unreal-CPlusPlus-Journey\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\BattleTank\BattleTank.cpp.obj"
+"H:\Git\Unreal-CPlusPlus-Journey\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\BattleTank\BattleTankGameModeBase.cpp.obj"
+"H:\Git\Unreal-CPlusPlus-Journey\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\BattleTank\BattleTank.init.gen.cpp.obj"
+"H:\Git\Unreal-CPlusPlus-Journey\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\BattleTank\BattleTankGameModeBase.gen.cpp.obj"
+"H:\Git\Unreal-CPlusPlus-Journey\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\BattleTank\PCLaunch.rc.res"
+/OUT:"H:\Git\Unreal-CPlusPlus-Journey\BattleTank\Intermediate\Build\Win64\UE4Editor\Development\BattleTank\UE4Editor-BattleTank.lib"
